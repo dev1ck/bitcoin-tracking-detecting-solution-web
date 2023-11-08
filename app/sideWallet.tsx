@@ -193,7 +193,6 @@ export default function SideWallet({ nodeData, edgeData }: any) {
     }
 
     if (!argTxChecked) {
-      console.log(nowTxsChecked.size);
       setTxsChecked(nowTxsChecked);
       setOutpointChecked(nowOutpointsChecked);
       setIsTxsAllChecked(nowTxsChecked.size === txsCheckbox.size);

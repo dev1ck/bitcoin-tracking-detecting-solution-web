@@ -86,19 +86,9 @@ RPC_PASSWORD=rpc_password
 NEO4J_URI="neo4j://your-neo4j-server:7687"
 NEO4J_USERNAME="neo4j_id"
 NEO4J_PASSWORD="neo4j_password"
-```
 
-Second, set `next.config.js` file
-
-```jsx
-async rewrites() {
-    return [
-      {
-        source: "/cpp/:path*",
-        destination: "Your-Core-Server-URL/:path*", // Your-Core-Server-URL Change
-      },
-    ];
-  },
+# Core Server
+CORE_SERVER="http://core-server:port"
 ```
 
 run the development server:

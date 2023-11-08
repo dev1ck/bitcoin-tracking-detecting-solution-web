@@ -51,6 +51,12 @@ export async function PUT(
   const tabId = cookieStore.get("tabId");
   const data = await request.json();
 
+  if (!process.env.CORE_SERVER) {
+    return NextResponse.json(
+      { error: "env파일에 CORE_SERVER 정보가 없습니다. " },
+      { status: 500 },
+    );
+  }
   if (!uid || !tabId) {
     return NextResponse.json({ error: "cookie error" }, { status: 400 });
   }
@@ -59,11 +65,10 @@ export async function PUT(
   let nodeParams: any;
   let relationParams: RelationshipParams;
   let query: any;
+  const coreServer = process.env.CORE_SERVER;
   try {
     if (data.type === "Transaction") {
-      response = await axios.get(
-        `http://localhost:7776/info/txid?hash=${data.hash}`, //core server
-      );
+      response = await axios.get(`${coreServer}/info/txid?hash=${data.hash}`);
       nodeParams = makeTxParam(response.data);
       relationParams = {
         type: data.relationship.type,
@@ -72,9 +77,7 @@ export async function PUT(
         spending_outpoints: data.relationship.spending_outpoints,
       };
     } else if (data.type === "Wallet") {
-      response = await axios.get(
-        `http://localhost:7776/info/addr?hash=${data.hash}`, //core server
-      );
+      response = await axios.get(`${coreServer}/info/addr?hash=${data.hash}`);
       nodeParams = makeWalletParam(response.data);
       relationParams = {
         type: data.relationship.type,

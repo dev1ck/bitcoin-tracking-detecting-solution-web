@@ -103,7 +103,7 @@ export async function appendNode(
         id: edge.identity.low,
         from: edge.start.low,
         to: edge.end.low,
-        label: edge.properties.value / 100000000 + " .BTC",
+        label: edge.properties.value / 100000000 + " BTC",
         color: edgeColor,
       } as Edge);
     } catch {}

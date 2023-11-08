@@ -45,6 +45,7 @@ export function makeTxParam(data: any) {
     entities,
     comments,
     true_recipient: data.true_recipient,
+    is_CoinJoin: data.is_CoinJoin,
   };
 }
 

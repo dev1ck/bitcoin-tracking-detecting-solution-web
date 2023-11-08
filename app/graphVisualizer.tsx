@@ -142,7 +142,7 @@ export default memo(function GraphVisualizer() {
                       id: edge.identity.low,
                       from: edge.start.low,
                       to: edge.end.low,
-                      label: edge.properties.value / 100000000 + " .BTC",
+                      label: edge.properties.value / 100000000 + " BTC",
                       color,
                     } as Edge);
                   }
@@ -184,9 +184,6 @@ export default memo(function GraphVisualizer() {
           });
           network.on("stabilizationProgress", function (params) {
             if (!loading) setLoading(true);
-            //var progress = params.iterations / params.total;
-            //console.log("Stabilization Progress:", progress);
-            // 진행률 표현
           });
           network.on("stabilizationIterationsDone", function () {
             setLoading(false);

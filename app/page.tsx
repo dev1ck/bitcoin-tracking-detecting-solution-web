@@ -12,7 +12,6 @@ export default function Home() {
   const [tabs, setTabs] = useState<{ _id: string; name: string }[] | null>(
     null,
   );
-  //수정 필요
   useEffect(() => {
     const fetchData = async () => {
       const userData = await axios("/user/api/admin");
